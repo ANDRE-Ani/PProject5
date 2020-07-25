@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+
+            {% block title %}
+                {% if title is defined %}{{title}}{% else %}Title{% endif %}
+            {% endblock %}
+
+
+
+        {% block header %}
+            
+                <div class="header2">
+                    <h1>{% if title is defined %}{{title}}{% else %}Header{% endif %}</h1>
+
+        {% endblock %}
+
+        {% block nav %}
+            <nav id="main-nav" class="container navbar1 navbar navbar-expand-lg navbar-light bg-light border rounded 
+mb-3">
+                <ul class="navbar-nav">
+                    <li class="nav-item {% if mainNavHome is defined %}active{% endif %}">
+                        <a class="nav-link" href="{{path('index')}}">Accueil</a>
+                    </li>
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('app_member_index')}}">Espace membre</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('app_project_syst')}}">Espace admin</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('logout')}}">Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('login')}}">Connexion</a>
+                        </li>
+                        <li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('app_registration_register')}}">Inscription</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endblock %}
+
+        {% block flash %}
+            {% for flash_message in app.session.flashbag.get('success') %}
+                <div class="container alert alert-success" role="alert">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('info') %}
+                <div class="container alert alert-info" role="alert">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('warning') %}
+                <div class="container alert alert-warning" role="alert">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('danger') %}
+                <div class="container alert alert-danger" role="alert">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+        {% endblock %}
+
+
+            {% block body %}
+            <div class="contenu">
+            <h2>Bienvenue sur 5Project</h2><br>
+            <p>Projet de portail web personnel</p>
+            </div>
+            {% endblock %}
+ 
+
+        {% block footer %}
+                <div class="col-12 footer">
+                    <p>5Project - Published under the <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank" title="Lien vers la license">GPLv3</a> License || <a href="https://gitlab.com/andre0ani/5project" title="Dépôt Gitlab" target="_blank"><img src="{{ asset('assets/img/gitlab.png') }}" alt="Gitlab"></a></p>
+                    <p> - ANDRE Ani - </p>
+                </div>
+        {% endblock %}
+
+        {% block javascripts %}{% endblock %}

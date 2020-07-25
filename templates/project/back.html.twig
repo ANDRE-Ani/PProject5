@@ -1,0 +1,27 @@
+{# templates/back.html.twig #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+        <title>{% block title %}Administration de mon Application{% endblock %}</title>
+    </head>
+    <body>
+        <div id="header">
+            <p>Administration</p>
+        </div>
+
+        <div id="content">
+            {% block content %}
+
+            <p>Contenu</p>
+
+        {% endblock %}
+        </div>
+
+        <div id="footer">
+            <p>Appli 5 - Copyright 2018 - Patrice</p>
+        </div>
+    </body>
+</html>

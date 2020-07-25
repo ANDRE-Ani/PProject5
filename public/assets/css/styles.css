@@ -1,0 +1,139 @@
+/* Feuille de style de l'application */
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    width: 100%;
+    background: #f1f1f1;
+    margin: 0;
+}
+
+.formulaire {
+    margin-top: 50px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 270px;
+}
+
+.formulaire2 {
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
+
+#mapid {
+    height: 400px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+h2 {
+    color: #c05b0b;
+}
+
+h3 {
+    color: #c05b0b;
+}
+
+.header {
+    height: 90px;
+    text-align: center;
+    background-color: #193871;
+    color: #c05b0b;
+}
+
+.header2 {
+    height: 90px;
+    text-align: center;
+    background-color: #193871;
+    color: #c05b0b;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.contenu {
+    padding: 10px;
+    width: 100%;
+    height: 280px;
+}
+
+.rss ul {
+    list-style: none;
+}
+
+table,
+th,
+td {
+    border: 2px solid #c05b0b;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+.text {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.card-header {
+    background-color: #193871;
+    color: #dfdfdf;
+}
+
+.card-body {
+    color: black;
+    background-color: #ca9115;
+}
+
+.title {
+    text-align: center;
+}
+
+.cont h3 {
+    padding-left: 40px;
+}
+
+.cont a {
+    color: #924914;
+}
+
+.navbar1 {
+    margin-top: 40px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #c05b0b;
+}
+
+.bg-primary {
+    background-color: #193871 !important;
+}
+
+#calendar {
+    width: 80%;
+    margin: auto;
+}
+
+.footer {
+    height: 90px;
+    text-align: center;
+    color: #c05b0b;
+    background-color: #193871;
+    padding: 15px;
+}
+
+@media screen and (max-width: 500px) {
+    .resp {
+        flex-direction: column;
+    }
+}

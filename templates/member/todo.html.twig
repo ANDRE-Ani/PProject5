@@ -1,0 +1,63 @@
+{# templates/member/todo.html.twig #}
+{% extends 'base2.html.twig' %}
+
+{% block title %}5Project - Tâches{% endblock %}
+
+    {% block content %}
+
+<div id="container">
+    <div class="row">
+
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-list-ul"></i>
+                Tâches
+            </div>
+            <div class="card-body">
+                <div class="col-10 form-group">
+        {{ form_start(contact_form) }}
+        {{ form_widget(contact_form) }}
+        
+        <input type="submit" value="Ajouter" class="btn btn-success" />
+        
+        {{ form_end(contact_form) }}
+    </div>
+
+<p><h3>Liste des tâches en cours :</h3></p>
+
+<div class="col">
+<table>
+<caption>Tâche en cours</caption>
+<thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tâche</th>
+        <th scope="col">Date</th>
+        <th scope="col">Supprimer</th>
+</tr>
+</thead>
+
+{% for record in records %}
+
+<tbody>
+<tr>
+        <td scope="row" data-label="ID">{{ record.id }}</td>
+        <td scope="row" data-label="Tâche">{{ record.task }}</td>
+        <td scope="row" data-label="Date">{{ record.date }}</td>
+        <td scope="row" data-label="Supprimer"><a href="{{ render(controller(
+        'App\\Controller\\TodoController::delTask', { 'id': record.id} )) }}">Supprimer</a></td>
+        </tr>
+</tbody>  
+{% endfor %}
+</table>
+</div>
+    </div>
+        </div>
+    </div>
+</div>
+
+
+        </div>
+
+{% endblock %}

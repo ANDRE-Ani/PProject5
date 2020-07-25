@@ -1,0 +1,48 @@
+{# templates/homepage/index2.html.twig #}
+{% extends 'base2.html.twig' %}
+
+{% block title %}5Project - Votre portail web personnel{% endblock %}
+
+{% block content %}
+
+<div id="container">
+    <div class="row">
+
+<div class="col-12 title">
+<p><h2>Bienvenue sur votre portail web personnel</h2><p>
+</div>
+
+<div class="col-sm">
+<div class="card">
+  <div class="card-header">
+    <i class="fas fa-clock"></i> Date | Heure
+  </div>
+  <div class="card-body">
+    <div id="dateJ">
+</div>
+  </div>
+</div>
+</div>
+
+<div class="col-sm">
+<div class="card">
+  <div class="card-header">
+    <i class="fas fa-sun"></i> Météo
+  </div>
+  <div class="card-body">
+    <div id="weather">
+</div>
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+{% endblock %}
+
+    {% block script %}
+    <script src="{{ asset('assets/js/date.js')}}"></script>
+    <script src="{{ asset('assets/js/weather.js')}}"></script>
+{% endblock %}

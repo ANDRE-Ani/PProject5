@@ -1,0 +1,45 @@
+{# templates/member/carte.html.twig #}
+{% extends 'base2.html.twig' %}
+
+
+{% block leaflet %}
+  <!-- JS for leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+  crossorigin=""/>
+
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+{% endblock %}
+
+
+{% block title %}5Project - Carte{% endblock %}
+
+{% block content %}
+
+<div id="container">
+    <div class="row">
+
+<div class="col-sm">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-map-marked"></i>
+                Carte
+            </div>
+            <div class="card-body">
+                <div id="mapid">
+      </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+    {% endblock %}
+
+
+{% block script %}
+<script src="{{ asset('assets/js/map.js')}}"></script>
+{% endblock %}

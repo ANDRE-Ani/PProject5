@@ -1,0 +1,47 @@
+{# templates/member/calendrier.html.twig #}
+{% extends 'base2.html.twig' %}
+{% block calendar %}
+    <link rel='stylesheet' href="{{ asset('assets/css/fullcalendar.css')}}"/>
+    <script src="{{ asset('assets/js/moment.js')}}"></script>
+    <script src="{{ asset('assets/js/fullcalendar.js')}}"></script>
+    <script src="{{ asset('assets/js/fr.js')}}"></script>
+{% endblock %}
+{% block title %}5Project - Calendrier{% endblock %}
+{% block scriptC %}
+    <script type="text/javascript">
+        $(function () {
+            $('#calendar').fullCalendar({
+                columnHeaderFormat: 'dddd',
+                weekNumbers: 'true',
+                locale: 'fr',
+                navLinks: 'true',
+                dayClick: function (date, jsEvent, view) {
+                    alert('Date sélectionnée : ' + date.format());
+                    $(this).css('background-color', '#409fe2');
+                }
+            })
+        });
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+<div id="container">
+    <div class="row">
+
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-calendar-alt"></i>
+                Calendrier
+            </div>
+            <div class="card-body">
+                <div id='calendar'></div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+    </div>
+{% endblock %}

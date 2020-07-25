@@ -1,0 +1,92 @@
+{# templates/member/rss.html.twig #}
+{% extends 'base2.html.twig' %}
+{% block title %}5Project - RSS{% endblock %}
+
+{% block content %}
+    <div id="container">
+        <div class="row">
+
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-rss-square"></i>
+                RSS
+            </div>
+            <div class="card-body">
+                <ul>
+                    {% for item in rssItems|slice(0, 3) %}
+                        <li>
+                            <h4>
+                                <span class='badge badge-secondary'>Titre :
+                                </span>
+                            </h4>
+                            <a href="{{ item.link }}">
+                                {{ item.title }}</a>
+                        </li>
+                        <li>
+                            {{ item.description|raw }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-rss-square"></i>
+                RSS
+            </div>
+            <div class="card-body">
+                <ul>
+                    {% for item in rssItems2|slice(0, 3) %}
+                        <li>
+                            <h4>
+                                <span class='badge badge-secondary'>Titre :
+                                </span>
+                            </h4>
+                            <a href="{{ item.link }}">
+                                {{ item.title }}</a>
+                        </li>
+                        <li>
+                            {{ item.description|raw }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <div class="col-sm">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-rss-square"></i>
+                RSS
+            </div>
+            <div class="card-body">
+                <ul>
+                    {% for item in rssItems3|slice(0, 3) %}
+                        <li>
+                            <h4>
+                                <span class='badge badge-secondary'>Titre :
+                                </span>
+                            </h4>
+                            <a href="{{ item.link }}">
+                                {{ item.title }}</a>
+                        </li>
+                        <li>
+                            {{ item.description|raw }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+{% endblock %}

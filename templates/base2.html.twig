@@ -1,0 +1,128 @@
+{# templates/base.html.twig #}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <!-- jquery CDN -->
+        <script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+
+        <script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js", integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6", crossorigin="anonymous")>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+
+        {% block leaflet %}
+        {% endblock %}
+
+        {% block calendar %}
+        {% endblock %}
+
+        {% block stylesheets %}
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {# <link rel="stylesheet" type="text/css" href="css/styles.css" /> #}
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}" />
+        <title>{% block title %}5Project{% endblock %}</title>
+    </head>
+
+    {% include 'project/flash_message.html.twig' %}
+
+    <body>
+{% block scriptC %}
+{% endblock %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="{{ path('index') }}">
+  <img src="{{ asset('assets/img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+    5Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_project_accueil') }}"><i class="fas fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_project_carte') }}"><i class="fas fa-map-marked"></i> Carte</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_project_rss') }}"><i class="fas fa-rss-square"></i> RSS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('todo') }}"><i class="fas fa-list-ul"></i> Tâches</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_project_calendrier') }}"><i class="fas fa-calendar-alt"></i> Calendrier</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_project_upload') }}"><i class="fas fa-upload"></i> Upload</a>
+      </li>
+
+      <li>
+        <a class="nav-link" href="{{ path('contact') }}"><i class="fas fa-envelope"></i> Mail</a>
+      </li>
+
+      <li class="nav-item">
+      <span class="nav-link">Utilisateur : {{ app.user.username|default('anonyme') }}
+      </li>
+
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('app_member_index')}}">Espace membre</a>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('app_project_syst')}}">Espace admin</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{path('logout')}}">Déconnexion</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('login')}}">Connexion</a>
+                        </li>
+                        <li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
+                            <a class="nav-link" href="{{path('app_registration_register')}}">Inscription</a>
+                        </li>
+                    {% endif %}
+                </ul>
+    </ul>
+    
+  </div>
+</nav>
+
+    <div class="container-fluid">
+    <div class="row">
+
+        <div class="col-12 content">
+        {% block content %}
+
+        {% endblock %}
+        </div>
+        
+        <div class="col-12 footer">
+            <p>5Project - Published under the <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank" title="Lien vers la license">GPLv3</a> License || <a href="https://gitlab.com/andre0ani/5project" title="Dépôt Gitlab" target="_blank"><img src="{{ asset('assets/img/gitlab.png') }}" alt="Gitlab"></a></p>
+            <p> - ANDRE Ani - </p>
+        </div>
+
+    </div>
+    </div>
+
+    {% block script %}
+    {% endblock %}
+
+    </body>
+</html>
