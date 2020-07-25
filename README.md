@@ -1,12 +1,10 @@
-Little project :
-Personnal web portal.
+Portail web personnel
 
-With free software and framework :
+Outils utilisés :
 - Symfony 4
 - Bootstrap
 - Leaflet
 
-Work on Apache/PHP/MySQL.
+Fonctionne avec Apache/PHP/MySQL.
 
-A little portal for personnal infos, RSS, map, todo, mails...
-With authentification.
+Portail web personnel avec diverses fonctionnalités et informations.
