@@ -4,7 +4,8 @@ namespace App\Repository;
 
 use App\Entity\TaskList;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
+// use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method TaskList|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,10 +20,10 @@ class TaskListRepository extends ServiceEntityRepository
         parent::__construct($registry, TaskList::class);
     }
 
-    // /**
-    //  * @return TaskList[] Returns an array of TaskList objects
-    //  */
-    /*
+     /**
+      * @return TaskList[] Returns an array of TaskList objects
+      */
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('t')
@@ -34,9 +35,9 @@ class TaskListRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
-    /*
+    
     public function findOneBySomeField($value): ?TaskList
     {
         return $this->createQueryBuilder('t')
@@ -46,5 +47,5 @@ class TaskListRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+    
 }
