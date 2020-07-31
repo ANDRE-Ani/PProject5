@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %} 
-
+{# templates/member/upload.html.twig #}
+{% extends 'base2.html.twig' %} 
 
 {% block body %} 
 {% block content %}
-   <h3>Envoie de fichiers</h3> 
+   <h3>Envoi de fichiers</h3> 
    <div id="simpleform"> 
       {{ form_start(form) }} 
       {{ form_widget(form) }} 
@@ -15,14 +15,10 @@ Liste des fichiers :
    
    <ul>
     {% for filename in filenames %}
-        <li><a href=" {{ filename }} " download=" {{ filename }} "> {{ filename }} </a></li>
+        <li><a href=" {{ filename }} " download=" {{ filename }} "> {{ filename }} </a> </li>
     {% endfor %}
 </ul>
    
-   
-   
-   
-   
-   
+
 {% endblock %}  
 {% endblock %} 

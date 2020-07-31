@@ -70,12 +70,12 @@ class MemberController extends Controller {
         return $this->render('member/accueil.html.twig');
     }
     
-        /**
-    * @Route("/upload", name="app_project_upload")
-    */
+     /*   
+     @Route("/upload", name="app_project_upload")
+    
     public function upload()
     {
       return $this->render('member/upload.html.twig');
-    }
+    } */
 
 }
