@@ -11,8 +11,8 @@
       {{ form_end(form) }} 
    </div>   
    
-Liste des fichiers :
-   
+Liste des fichiers : {{ filecount }}<br>
+
    <ul>
     {% for filename in filenames %}
         <li><a href=" {{ filename }} " download=" {{ filename }} "> {{ filename }} </a> </li>
