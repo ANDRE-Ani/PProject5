@@ -31,7 +31,7 @@ class UploadController extends AbstractController
          ->add('save', SubmitType::class, array('label' => 'Envoyer'))
          ->getForm();
 
-         // recuperation des informations sur les fichiers
+      // recuperation des informations sur les fichiers
       $form->handleRequest($request);
       if ($form->isSubmitted() && $form->isValid()) {
          $file = $upload->getFichier();
@@ -49,15 +49,46 @@ class UploadController extends AbstractController
          $folderPath = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
          $files = glob($folderPath . '*.*');
 
+         // compte le nombre de fichiers
          if ($files !== false) {
             $filecount = count($files);
+         }
+
+         // taille du répertoire
+         $files = scandir('../public/uploads/');
+         foreach ($files as $file) {
+            $sizeFK = filesize('../public/uploads/' . $file);
+            $sizeFB = ($sizeFK / 1024 / 1024);
+            $sizeF = number_format($sizeFB, 2);
          }
 
          return $this->render('/member/upload.html.twig', array(
             'form' => $form->createView(),
             'filenames' => $filenames,
-            'filecount' => $filecount
+            'filecount' => $filecount,
+            'sizeF' => $sizeF
          ));
       }
+   }
+
+
+   /** 
+    * @Route("/member/uploadDelete", name="app_project_upload_delete") 
+    */
+   public function deleteAction(Request $request)
+   {
+
+
+
+      $files = glob($this->getParameter('photos_directory'));
+      $filenames = array_map('basename', glob('../public/uploads/*.*'));
+      //$files = glob($folderPath . '*.*');
+
+      $path_parts = pathinfo('../public/uploads/*.*');
+      $path_parts['filename'];
+      var_dump($path_parts);
+
+
+      unlink('../public/uploads/' . $filenames);
    }
 }

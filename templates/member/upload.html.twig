@@ -11,11 +11,13 @@
       {{ form_end(form) }} 
    </div>   
    
-Liste des fichiers : {{ filecount }}<br>
-
+Nombre de fichiers : {{ filecount }}<br>
+Taille du répertoire : {{ sizeF }} Mo<br>
    <ul>
     {% for filename in filenames %}
-        <li><a href=" {{ filename }} " download=" {{ filename }} "> {{ filename }} </a> </li>
+        <li><a href=" {{ filename }} " download=" {{ filename }} "> {{ filename }} </a> <a href="{{ path('app_project_upload_delete')}}" >Supprimer</a></li>
+
+    
     {% endfor %}
 </ul>
    
