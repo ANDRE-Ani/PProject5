@@ -10,6 +10,22 @@ body {
     margin: 0;
 }
 
+#simpleform {
+    width: 40%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#fichiers {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: thick double #193871;
+    padding: 15px;
+}
+
 .formulaire {
     margin-top: 50px;
     width: 250px;
@@ -56,6 +72,14 @@ h3 {
     padding-top: 15px;
     padding-bottom: 15px;
     margin-bottom: 20px;
+}
+
+.couleur {
+    color: #c05734;
+}
+
+.card-body a {
+    color: white;
 }
 
 .content {

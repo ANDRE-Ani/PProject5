@@ -22,7 +22,7 @@ class UploadController extends AbstractController
       $form = $this->createFormBuilder($upload)
 
          ->add('fichier', FileType::class, array(
-            'label' => 'Fichier',
+            'label' => 'Fichier à envoyer',
             "attr" => array(
                "accept" => "image/*, application/pdf, application/vnd.oasis.opendocument.text, application/vnd.oasis.opendocument.presentation, application/vnd.oasis.opendocument.spreadsheet",
                "multiple" => false,
@@ -44,14 +44,13 @@ class UploadController extends AbstractController
       } else {
 
          // recuperation nom des fichiers et nombre
-         $files = glob($this->getParameter('photos_directory'));
          $filenames = array_map('basename', glob('../public/uploads/*.*'));
          $folderPath = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
-         $files = glob($folderPath . '*.*');
+         $files2 = glob($folderPath . '*.*');
 
          // compte le nombre de fichiers
-         if ($files !== false) {
-            $filecount = count($files);
+         if ($files2 !== false) {
+            $filecount = count($files2);
          }
 
          // taille du répertoire
@@ -60,7 +59,7 @@ class UploadController extends AbstractController
             $sizeFK = filesize('../public/uploads/' . $file);
             $sizeFB = ($sizeFK / 1024 / 1024);
             $sizeF = number_format($sizeFB, 2);
-         }
+         } 
 
          return $this->render('/member/upload.html.twig', array(
             'form' => $form->createView(),
@@ -78,17 +77,9 @@ class UploadController extends AbstractController
    public function deleteAction(Request $request)
    {
 
-
-
-      $files = glob($this->getParameter('photos_directory'));
-      $filenames = array_map('basename', glob('../public/uploads/*.*'));
-      //$files = glob($folderPath . '*.*');
-
-      $path_parts = pathinfo('../public/uploads/*.*');
-      $path_parts['filename'];
-      var_dump($path_parts);
-
-
-      unlink('../public/uploads/' . $filenames);
+      $file = $_GET['fichier'];
+      unlink('../public/uploads/'.$file);
+      $this->addFlash('success', 'Fichier supprimé');
+      return $this->redirectToRoute('app_project_upload');
    }
 }

@@ -1,26 +1,49 @@
 {# templates/member/upload.html.twig #}
-{% extends 'base2.html.twig' %} 
+{% extends 'base2.html.twig' %}
 
-{% block body %} 
-{% block content %}
-   <h3>Envoi de fichiers</h3> 
-   <div id="simpleform"> 
-      {{ form_start(form) }} 
-      {{ form_widget(form) }} 
-      
-      {{ form_end(form) }} 
-   </div>   
-   
-Nombre de fichiers : {{ filecount }}<br>
-Taille du répertoire : {{ sizeF }} Mo<br>
-   <ul>
-    {% for filename in filenames %}
-        <li><a href=" {{ filename }} " download=" {{ filename }} "> {{ filename }} </a> <a href="{{ path('app_project_upload_delete')}}" >Supprimer</a></li>
+{% block body %}
+	{% block content %}
+		<h3>Envoi de fichiers</h3>
+		<div id="simpleform">
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
 
-    
-    {% endfor %}
-</ul>
-   
+			{{ form_end(form) }}
+		</div>
 
-{% endblock %}  
-{% endblock %} 
+
+		<div class="col-sm">
+			<div class="card">
+				<div class="card-header">
+					<i class="fas fa-file"></i>
+					Nombre de fichiers :
+					<span class="couleur">{{ filecount }}</span>
+					Taille du répertoire :
+					<span class="couleur">{{ sizeF }}</span>
+					Mo
+				</div>
+				<div class="card-body">
+					<div id="fic">
+
+						<ul>
+							{% for filename in filenames %}
+								<li>
+									<a href=" {{ filename }} " download=" {{ filename }} ">
+										{{ filename }}
+									</a>
+									||
+									<a href="{{ path('app_project_upload_delete', {'fichier': filename}) }}">
+										<i class="fas fa-trash-alt"></i>
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}
+{% endblock %}
