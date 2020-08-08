@@ -25,7 +25,7 @@ class SecurityController extends Controller
 btn-block']])
             ->getForm();
         return $this->render('security/login.html.twig', [
-            'mainNavLogin' => true, 'title' => '5Project - Connexion',
+            'mainNavLogin' => true, 'title' => 'PProject5 - Connexion',
             'form' => $form->createView(),
             'last_username' => $lastUsername,
             'error' => $error,

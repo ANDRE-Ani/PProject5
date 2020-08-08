@@ -11,9 +11,10 @@ body {
 }
 
 #simpleform {
-    width: 40%;
+    width: 45%;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding-left: 15px;
 }
 
 #fichiers {

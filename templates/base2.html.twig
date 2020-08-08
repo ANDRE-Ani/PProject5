@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}" />
-        <title>{% block title %}5Project{% endblock %}</title>
+        <title>{% block title %}PProject5{% endblock %}</title>
     </head>
 
     {% include 'project/flash_message.html.twig' %}
@@ -57,7 +57,7 @@
         <a class="nav-link" href="{{ path('app_project_rss') }}"><i class="fas fa-rss-square"></i> RSS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ path('todo') }}"><i class="fas fa-list-ul"></i> Tâches</a>
+        <a class="nav-link" href="#"><i class="fas fa-list-ul"></i> Tâches</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ path('app_project_calendrier') }}"><i class="fas fa-calendar-alt"></i> Calendrier</a>
@@ -74,14 +74,10 @@
       <span class="nav-link">Utilisateur : {{ app.user.username|default('anonyme') }}
       </li>
 
+
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('app_member_index')}}">Espace membre</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('app_project_syst')}}">Espace admin</a>
+                            <a class="nav-link" href="{{path('app_project_admin')}}">Espace admin</a>
                         </li>
                     {% endif %}
                 </ul>

@@ -14,7 +14,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return $this->render('member/accueil.html.twig', ['mainNavMember' => true, 'title' => '5Project - Espace Membre']);
+        return $this->render('member/accueil.html.twig', ['mainNavMember' => true, 'title' => 'PProject5 - Espace Membre']);
     }
 
 

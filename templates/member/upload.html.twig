@@ -1,6 +1,6 @@
 {# templates/member/upload.html.twig #}
 {% extends 'base2.html.twig' %}
-
+{% block title %}PProject5 - Envoi de fichiers{% endblock %}
 {% block body %}
 	{% block content %}
 		<h3>Envoi de fichiers</h3>
@@ -28,8 +28,7 @@
 						<ul>
 							{% for filename in filenames %}
 								<li>
-									<a href=" {{ filename }} " download=" {{ filename }} ">
-										{{ filename }}
+									<a href=" {{ filename }} " download=" {{ filename }} ">	{{ filename }}
 									</a>
 									||
 									<a href="{{ path('app_project_upload_delete', {'fichier': filename}) }}">

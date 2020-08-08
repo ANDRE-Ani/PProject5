@@ -41,9 +41,10 @@ class UploadController extends AbstractController
 
          $this->addFlash('success', 'Fichier envoyé');
          return $this->redirectToRoute('app_project_upload');
+
       } else {
 
-         // recuperation nom des fichiers et nombre
+         // recuperation nom des fichiers
          $filenames = array_map('basename', glob('../public/uploads/*.*'));
          $folderPath = $_SERVER['DOCUMENT_ROOT'] . '/uploads/';
          $files2 = glob($folderPath . '*.*');
@@ -76,7 +77,7 @@ class UploadController extends AbstractController
     */
    public function deleteAction(Request $request)
    {
-
+      // supprimer un fichier
       $file = $_GET['fichier'];
       unlink('../public/uploads/'.$file);
       $this->addFlash('success', 'Fichier supprimé');

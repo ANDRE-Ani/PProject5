@@ -32,14 +32,10 @@
                     <li class="nav-item {% if mainNavHome is defined %}active{% endif %}">
                         <a class="nav-link" href="{{path('index')}}">Accueil</a>
                     </li>
+
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('app_member_index')}}">Espace membre</a>
-                        </li>
-                    {% endif %}
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li class="nav-item {% if mainNavAdmin is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('app_project_syst')}}">Espace admin</a>
+                            <a class="nav-link" href="{{path('app_project_admin')}}">Espace admin</a>
                         </li>
                     {% endif %}
                 </ul>

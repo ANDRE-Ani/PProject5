@@ -9,7 +9,7 @@ class AdminController extends AbstractController
 {
 
   /**
-   * @Route("/admin/syst", name="app_project_syst")
+   * @Route("/member/admin", name="app_project_admin")
    */
   public function admin()
   {
@@ -22,7 +22,7 @@ class AdminController extends AbstractController
     $ipS = $_SERVER['SERVER_ADDR'];
     $nav = $_SERVER['HTTP_USER_AGENT'];
 
-    return $this->render('admin/admin.html.twig', array(
+    return $this->render('member/admin.html.twig', array(
       'proto' => $proto,
       'version' => $version,
       'name' => $name,
