@@ -70,21 +70,20 @@
         <a class="nav-link" href="{{ path('contact') }}"><i class="fas fa-envelope"></i> Mail</a>
       </li>
 
-      <li class="nav-item">
-      <span class="nav-link">Utilisateur : {{ app.user.username|default('anonyme') }}
+      <li>
+      <span class="nav-link">||</span>
       </li>
-
 
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('app_project_admin')}}">Espace admin</a>
+                            <a class="nav-link" href="{{path('app_project_admin')}}"><i class="fas fa-tools"></i> Espace admin</a>
                         </li>
                     {% endif %}
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     {% if is_granted('ROLE_USER') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{path('logout')}}">Déconnexion</a>
+                            <a class="nav-link" href="{{path('logout')}}">Déconnexion {{ app.user.username }}</a>
                         </li>
                     {% else %}
                         <li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
