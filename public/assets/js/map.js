@@ -4,14 +4,16 @@ navigator.geolocation.getCurrentPosition(function(location) {
     var latlng = new L.LatLng(location.coords.latitude, location.coords.longitude);
 
     var mymap = L.map('mapid').setView(latlng, 13)
-    L.tileLayer(
-        'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery Â© <a href="https://mapbox.com">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoiYW5kcmUwYW5pIiwiYSI6ImNqam5zZ2tjbDFmdHIzcXF2Mmp1ZmR2M2cifQ.Leo55txTsN0i05KAB2vRew'
-        }).addTo(mymap);
-
+ 
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiYW5kcmUwYW5pIiwiYSI6ImNrZHk2N3poajB2bGQyc294ZzR2ejZnczkifQ.rYjlPcBXwZwMDBun11hP3Q'
+}).addTo(mymap);
+    
     var popup = L.popup();
 
     // popup on clic

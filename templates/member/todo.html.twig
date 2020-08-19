@@ -8,56 +8,48 @@
 <div id="container">
     <div class="row">
 
-    <div class="col-sm">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-list-ul"></i>
-                Tâches
-            </div>
-            <div class="card-body">
-                <div class="col-10 form-group">
-        {{ form_start(contact_form) }}
-        {{ form_widget(contact_form) }}
-        
-        <input type="submit" value="Ajouter" class="btn btn-success" />
-        
-        {{ form_end(contact_form) }}
-    </div>
 
-<p><h3>Liste des tâches en cours :</h3></p>
 
-<div class="col">
-<table>
-<caption>Tâche en cours</caption>
-<thead>
+<p><h3>Tâches en cours :</h3></p>
+
+<table class=table table-bordered>
+    <thead>
       <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Tâche</th>
-        <th scope="col">Date</th>
-        <th scope="col">Supprimer</th>
-</tr>
-</thead>
+        <th>ID</th>
+        <th>Tâche</th>
+         <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for afaire in afaires %}
+      <tr>
+        <td scope=row>{{afaire.id}}</td>
+        <td>{{afaire.name}}</td>
+        <td>{{afaire.createDate | date('d/m/Y')}}</td>
+        <td>
+        <a href=todo/delete/{{afaire.id}}><button type="button" class="btn btn-danger">Supprimer</button></a>
+        
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
-{% for record in records %}
 
-<tbody>
-<tr>
-        <td scope="row" data-label="ID">{{ record.id }}</td>
-        <td scope="row" data-label="Tâche">{{ record.task }}</td>
-        <td scope="row" data-label="Date">{{ record.date }}</td>
-        <td scope="row" data-label="Supprimer"><a href="{{ render(controller(
-        'App\\Controller\\TodoController::delTask', { 'id': record.id} )) }}">Supprimer</a></td>
-        </tr>
-</tbody>  
-{% endfor %}
-</table>
+
+
+
+
+
+
+
+
+<h2 class=page-header>Ajouter une tâche</h2>
+
+{{form(form)}}
+
 </div>
-    </div>
-        </div>
-    </div>
 </div>
-
-
-        </div>
 
 {% endblock %}

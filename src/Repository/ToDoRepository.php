@@ -2,28 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\TaskList;
+use App\Entity\ToDo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-// use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method TaskList|null find($id, $lockMode = null, $lockVersion = null)
- * @method TaskList|null findOneBy(array $criteria, array $orderBy = null)
- * @method TaskList[]    findAll()
- * @method TaskList[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ToDo|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ToDo|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ToDo[]    findAll()
+ * @method ToDo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TaskListRepository extends ServiceEntityRepository
+class ToDoRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+    public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TaskList::class);
+        parent::__construct($registry, ToDo::class);
     }
 
-     /**
-      * @return TaskList[] Returns an array of TaskList objects
-      */
-    
+    // /**
+    //  * @return ToDo[] Returns an array of ToDo objects
+    //  */
+    /*
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('t')
@@ -35,10 +34,10 @@ class TaskListRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    
+    */
 
-    
-    public function findOneBySomeField($value): ?TaskList
+    /*
+    public function findOneBySomeField($value): ?ToDo
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')
@@ -47,5 +46,5 @@ class TaskListRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    
+    */
 }
