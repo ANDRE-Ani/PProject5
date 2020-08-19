@@ -1,55 +1,54 @@
 {# templates/member/todo.html.twig #}
 {% extends 'base2.html.twig' %}
 
-{% block title %}PProject5 - Tâches{% endblock %}
-
-    {% block content %}
-
-<div id="container">
-    <div class="row">
-
-
-
-<p><h3>Tâches en cours :</h3></p>
-
-<table class=table table-bordered>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Tâche</th>
-         <th>Date</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for afaire in afaires %}
-      <tr>
-        <td scope=row>{{afaire.id}}</td>
-        <td>{{afaire.name}}</td>
-        <td>{{afaire.createDate | date('d/m/Y')}}</td>
-        <td>
-        <a href=todo/delete/{{afaire.id}}><button type="button" class="btn btn-danger">Supprimer</button></a>
-        
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-
-
-
-
-
-
-
-
-
-<h2 class=page-header>Ajouter une tâche</h2>
-
-{{form(form)}}
-
-</div>
-</div>
-
+{% block title %}PProject5 - Tâches
 {% endblock %}
+{% block body %}
+	{% block content %}
+
+		<h3>Ajouter une tâche</h3>
+
+		<div class="simpleform">
+			{{form(form)}}
+			</div>
+
+
+			<div class="col-sm">
+				<div class="card">
+					<div class="card-header">
+						<i class="fas fa-tasks"></i>
+						Tâches en cours
+					</div>
+
+					<div class="card-body">
+						<table class="table" table-bordered>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Tâche</th>
+									<th>Date</th>
+									<th>Supprimer</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for afaire in afaires %}
+									<tr>
+										<td scope="row">{{afaire.id}}</td>
+										<td>{{afaire.name}}</td>
+										<td>{{afaire.createDate | date('d/m/Y')}}</td>
+										<td>
+											<a href=/member/todo/delete/{{afaire.id}}><button type="button" class="btn btn-danger">Supprimer</button>
+											</a>
+
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			</div>
+
+		{% endblock %}
+	{% endblock %}

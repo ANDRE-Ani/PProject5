@@ -10,8 +10,8 @@ body {
     margin: 0;
 }
 
-#simpleform {
-    width: 45%;
+.simpleform {
+    width: 80%;
     margin-top: 20px;
     margin-bottom: 20px;
     padding-left: 15px;

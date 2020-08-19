@@ -4,10 +4,9 @@
 {% block body %}
 	{% block content %}
 		<h3>Envoi de fichiers</h3>
-		<div id="simpleform">
+		<div class="simpleform">
 			{{ form_start(form) }}
 			{{ form_widget(form) }}
-
 			{{ form_end(form) }}
 		</div>
 
@@ -23,7 +22,6 @@
 					Mo
 				</div>
 				<div class="card-body">
-					<div id="fic">
 
 						<ul>
 							{% for filename in filenames %}
@@ -42,7 +40,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 
 	{% endblock %}
 {% endblock %}
