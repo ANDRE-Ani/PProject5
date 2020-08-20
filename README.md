@@ -19,3 +19,14 @@ Portail web personnel avec diverses fonctionnalités et informations :
  - flux RSS
 
 Le but est de fournir un outil web simple et accessible à tous permettant de garder le contrôle de ses données.
+
+
+Projet en version beta, ne pas utiliser en production.
+
+
+Site de développement :
+https://5project.andre-ani.fr/
+
+
+Login : demo@example.com
+Mot de passe : DtestD
