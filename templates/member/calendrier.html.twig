@@ -1,47 +1,51 @@
 {# templates/member/calendrier.html.twig #}
 {% extends 'base2.html.twig' %}
 {% block calendar %}
-    <link rel='stylesheet' href="{{ asset('assets/css/fullcalendar.css')}}"/>
-    <script src="{{ asset('assets/js/moment.js')}}"></script>
-    <script src="{{ asset('assets/js/fullcalendar.js')}}"></script>
-    <script src="{{ asset('assets/js/fr.js')}}"></script>
+	<link rel='stylesheet' href="{{ asset('assets/css/fullcalendar.css')}}"/>
+	<script src="{{ asset('assets/js/moment.js')}}"></script>
+	<script src="{{ asset('assets/js/fullcalendar.js')}}"></script>
+	<script src="{{ asset('assets/js/fr.js')}}"></script>
 {% endblock %}
-{% block title %}PProject5 - Calendrier{% endblock %}
+{% block title %}PProject5 - Calendrier
+{% endblock %}
 {% block scriptC %}
-    <script type="text/javascript">
-        $(function () {
-            $('#calendar').fullCalendar({
-                columnHeaderFormat: 'dddd',
-                weekNumbers: 'true',
-                locale: 'fr',
-                navLinks: 'true',
-                dayClick: function (date, jsEvent, view) {
-                    alert('Date sélectionnée : ' + date.format());
-                    $(this).css('background-color', '#409fe2');
-                }
-            })
-        });
-    </script>
+	<script type="text/javascript">
+		$(function () {
+$('#calendar').fullCalendar({
+columnHeaderFormat: 'dddd',
+weekNumbers: 'true',
+locale: 'fr',
+navLinks: 'true',
+dayClick: function (date, jsEvent, view) {
+alert('Date sélectionnée : ' + date.format());
+$(this).css('background-color', '#409fe2');
+}
+})
+});
+	</script>
 {% endblock %}
 
 
 {% block content %}
 
-<div id="container">
-    <div class="row">
+	<div id="container">
+		<div class="row">
 
-    <div class="col-sm">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-calendar-alt"></i>
-                Calendrier
-            </div>
-            <div class="card-body">
-                <div id='calendar'></div>
-            </div>
-        </div>
-    </div>
+			<div class="col-sm">
+				<div class="card">
+					<div class="card-header">
+						<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-calendar3-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2H0z"/>
+							<path fill-rule="evenodd" d="M0 3h16v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3zm6.5 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm4-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm2 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-8 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm2 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm4-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm2 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-8 2a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm2 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm4-1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+						</svg>
+						Calendrier
+					</div>
+					<div class="card-body">
+						<div id='calendar'></div>
+					</div>
+				</div>
+			</div>
 
-            </div>
-    </div>
+		</div>
+	</div>
 {% endblock %}

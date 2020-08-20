@@ -1,6 +1,7 @@
 {# templates/member/upload.html.twig #}
 {% extends 'base2.html.twig' %}
-{% block title %}PProject5 - Envoi de fichiers{% endblock %}
+{% block title %}PProject5 - Fichiers
+{% endblock %}
 {% block body %}
 	{% block content %}
 		<h3>Envoi de fichiers</h3>
@@ -14,7 +15,9 @@
 		<div class="col-sm">
 			<div class="card">
 				<div class="card-header">
-					<i class="fas fa-file"></i>
+					<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-file-arrow-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" d="M12 15H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2zm-3.5-3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+					</svg>
 					Nombre de fichiers :
 					<span class="couleur">{{ filecount }}</span>
 					Taille du répertoire :
@@ -23,23 +26,26 @@
 				</div>
 				<div class="card-body">
 
-						<ul>
-							{% for filename in filenames %}
-								<li>
-									<a href=" {{ filename }} " download=" {{ filename }} ">	{{ filename }}
-									</a>
-									||
-									<a href="{{ path('app_project_upload_delete', {'fichier': filename}) }}">
-										<i class="fas fa-trash-alt"></i>
-									</a>
-								</li>
-							{% endfor %}
-						</ul>
+					<ul>
+						{% for filename in filenames %}
+							<li>
+								<a href=" {{ filename }} " download=" {{ filename }} ">
+									{{ filename }}
+								</a>
+								||
+								<a href="{{ path('app_project_upload_delete', {'fichier': filename}) }}">
+									<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+									</svg>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
 
 
-					</div>
 				</div>
 			</div>
+		</div>
 
 	{% endblock %}
 {% endblock %}

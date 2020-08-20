@@ -1,51 +1,65 @@
 {# templates/admin/admin.html.twig #}
 {% extends 'base2.html.twig' %}
 
-{% block title %}PProject5 - Administration{% endblock %}
+{% block title %}PProject5 - Administration
+{% endblock %}
 
-    {% block content %}
+{% block content %}
 
-    <div id="container">
-    <div class="row">
+	<div id="container">
+		<div class="row">
 
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-tools"></i>
-                Informations serveur
-            </div>
-            <div class="card-body">
-                <ul>
-                    <li>Nom d'hôte : {{ name }}</li>
-                    <li>Version de PHP : {{ version }}</li>
-                    <li>Protocol : {{ proto }}</li>
-                    <li>Racine : {{ root }}</li>
-                    <li>Adresse IP : {{ ipS }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-header">
+						<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-info-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+						</svg>
+						Informations serveur
+					</div>
+					<div class="card-body">
+						<ul>
+							<li>Nom d'hôte :
+								{{ name }}</li>
+							<li>Version de PHP :
+								{{ version }}</li>
+							<li>Protocol :
+								{{ proto }}</li>
+							<li>Racine :
+								{{ root }}</li>
+							<li>Adresse IP :
+								{{ ipS }}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
 
-<div class="col-sm-6">
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-user"></i>
-                Informations visiteur
-            </div>
-            <div class="card-body">
-            {% set user = app.user %}
-                <ul>
-                    <li>Utilisateur : {{ app.user.email }}</li>
-                    <li>Identifiant : {{ app.user.id }}</li>
-                    <li>Adresse IP : {{ ip }}</li>
-                    <li>Navigateur : {{ nav }}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-header">
+						<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm6 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 11.825 10.623 11 8 11s-4.146.826-5 1.755V13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+						</svg>
+						Informations visiteur
+					</div>
+					<div class="card-body">
+						{% set user = app.user %}
+						<ul>
+							<li>Utilisateur :
+								{{ app.user.email }}</li>
+							<li>Identifiant :
+								{{ app.user.id }}</li>
+							<li>Adresse IP :
+								{{ ip }}</li>
+							<li>Navigateur :
+								{{ nav }}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
 
-            </div>
-    </div>
+		</div>
+	</div>
 
 {% endblock %}
