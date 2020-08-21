@@ -6,157 +6,144 @@
 		<meta
 		name="viewport" content="width=device-width, initial-scale=1"/>
 
-		<!-- jquery CDN -->
-		<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+		<!-- Bootstrap, jQuery, Popper -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-		<script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js", integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" , crossorigin="anonymous" )>
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+		{% block calendar %}{% endblock %}
 
-			{% block leaflet %}{% endblock %}
+		{% block stylesheets %}
 
-			{% block calendar %}{% endblock %}
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-			{% block stylesheets %}
-
-				<link
-				href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-				{# <link rel="stylesheet" type="text/css" href="css/styles.css" /> #}
-				<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+			<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+		{% endblock %}
+		<link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}"/>
+		<title>
+			{% block title %}PProject5
 			{% endblock %}
-			<link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}"/>
-			<title>
-				{% block title %}PProject5
-				{% endblock %}
-			</title>
-		</head>
-
-		{% include 'project/flash_message.html.twig' %}
-
-		<body>
-			{% block scriptC %}{% endblock %}
-
-			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-				<a class="navbar-brand" href="{{ path('index') }}">
-					<img src="{{ asset('assets/img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
-					PProject5</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_project_accueil') }}">
-								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-house-door-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
-									<path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
-								</svg>
-								Accueil
-								<span class="sr-only">(current)</span>
-							</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_project_carte') }}">
-								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-map" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M15.817.613A.5.5 0 0 1 16 1v13a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 14.51l-4.902.98A.5.5 0 0 1 0 15V2a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0l4.902.98 4.902-.98a.5.5 0 0 1 .415.103zM10 2.41l-4-.8v11.98l4 .8V2.41zm1 11.98l4-.8V1.61l-4 .8v11.98zm-6-.8V1.61l-4 .8v11.98l4-.8z"/>
-								</svg>
-								Carte</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_project_rss') }}">
-								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-rss-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5a1 1 0 0 0 0 2 8 8 0 0 1 8 8 1 1 0 1 0 2 0c0-5.523-4.477-10-10-10zm0 4a1 1 0 0 0 0 2 4 4 0 0 1 4 4 1 1 0 1 0 2 0 6 6 0 0 0-6-6zm.5 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-								</svg>
-								RSS</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_project_todo') }}">
-								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-check-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-								</svg>
-								Tâches</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_project_calendrier') }}">
-								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-calendar-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM0 5h16v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm10.854 3.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-								</svg>
-								Calendrier</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_project_upload') }}">
-								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-file-earmark-arrow-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h5.293a1 1 0 0 1 .707.293L13.707 5a1 1 0 0 1 .293.707V13a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm7 2V2l4 4h-3a1 1 0 0 1-1-1zM6.354 9.854a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 8.707V12.5a.5.5 0 0 1-1 0V8.707L6.354 9.854z"/>
-								</svg>
-								Upload</a>
-						</li>
-
-						<li>
-							<a class="nav-link" href="{{ path('contact') }}">
-								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
-								</svg>
-								Mail</a>
-						</li>
-
-						<li>
-							<span class="nav-link">||</span>
-						</li>
-
-						{% if is_granted('ROLE_USER') %}
-							<li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
-								<a class="nav-link" href="{{path('app_project_admin')}}">
-									<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-										<path fill-rule="evenodd" d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"/>
-										<path fill-rule="evenodd" d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
-									</svg>
-									Espace admin</a>
-							</li>
-						{% endif %}
-					</ul>
-					<ul class="navbar-nav ml-auto">
-						{% if is_granted('ROLE_USER') %}
-							<li class="nav-item">
-								<a class="nav-link" href="{{path('logout')}}" title="Déconnecter">
-									<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-unlock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-										<path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
-										<path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
-									</svg>
-									{{ app.user.username }}</a>
-							</li>
-						{% else %}
-							<li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
-								<a class="nav-link" href="{{path('login')}}">Connexion</a>
-							</li>
-							<li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
-								<a class="nav-link" href="{{path('app_registration_register')}}">Inscription</a>
-							</li>
-						{% endif %}
-					</ul>
-				</ul>
-
-			</div>
-		</body>
+		</title>
 	</head>
-</html></nav><div class="container-fluid">
-<div class="row">
 
-	<div class="col-12 content"> {% block content %}{% endblock %}
+	{% include 'project/flash_message.html.twig' %}
+
+	<body>
+		{% block scriptC %}{% endblock %}
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<a class="navbar-brand" href="{{ path('index') }}">
+				<img src="{{ asset('assets/img/logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+				PProject5</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_project_accueil') }}">
+							<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-house-door-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
+								<path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+							</svg>
+							Accueil
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_project_carte') }}">
+							<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-map" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M15.817.613A.5.5 0 0 1 16 1v13a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 14.51l-4.902.98A.5.5 0 0 1 0 15V2a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0l4.902.98 4.902-.98a.5.5 0 0 1 .415.103zM10 2.41l-4-.8v11.98l4 .8V2.41zm1 11.98l4-.8V1.61l-4 .8v11.98zm-6-.8V1.61l-4 .8v11.98l4-.8z"/>
+							</svg>
+							Carte</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_project_rss') }}">
+							<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-rss-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm1.5 2.5a1 1 0 0 0 0 2 8 8 0 0 1 8 8 1 1 0 1 0 2 0c0-5.523-4.477-10-10-10zm0 4a1 1 0 0 0 0 2 4 4 0 0 1 4 4 1 1 0 1 0 2 0 6 6 0 0 0-6-6zm.5 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+							</svg>
+							RSS</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_project_todo') }}">
+							<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-check-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+							</svg>
+							Tâches</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_project_calendrier') }}">
+							<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-calendar-check-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM0 5h16v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm10.854 3.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+							</svg>
+							Calendrier</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_project_upload') }}">
+							<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-file-earmark-arrow-up-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h5.293a1 1 0 0 1 .707.293L13.707 5a1 1 0 0 1 .293.707V13a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm7 2V2l4 4h-3a1 1 0 0 1-1-1zM6.354 9.854a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 8.707V12.5a.5.5 0 0 1-1 0V8.707L6.354 9.854z"/>
+							</svg>
+							Upload</a>
+					</li>
+
+					<li>
+						<a class="nav-link" href="{{ path('contact') }}">
+							<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+							</svg>
+							Mail</a>
+					</li>
+
+					<li>
+						<span class="nav-link">||</span>
+					</li>
+
+					{% if is_granted('ROLE_USER') %}
+						<li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
+							<a class="nav-link" href="{{path('app_project_admin')}}">
+								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-tools" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M0 1l1-1 3.081 2.2a1 1 0 0 1 .419.815v.07a1 1 0 0 0 .293.708L10.5 9.5l.914-.305a1 1 0 0 1 1.023.242l3.356 3.356a1 1 0 0 1 0 1.414l-1.586 1.586a1 1 0 0 1-1.414 0l-3.356-3.356a1 1 0 0 1-.242-1.023L9.5 10.5 3.793 4.793a1 1 0 0 0-.707-.293h-.071a1 1 0 0 1-.814-.419L0 1zm11.354 9.646a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708-.708l-3-3z"/>
+									<path fill-rule="evenodd" d="M15.898 2.223a3.003 3.003 0 0 1-3.679 3.674L5.878 12.15a3 3 0 1 1-2.027-2.027l6.252-6.341A3 3 0 0 1 13.778.1l-2.142 2.142L12 4l1.757.364 2.141-2.141zm-13.37 9.019L3.001 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+								</svg>
+								Espace admin</a>
+						</li>
+					{% endif %}
+				</ul>
+				<ul class="navbar-nav ml-auto">
+					{% if is_granted('ROLE_USER') %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{path('logout')}}" title="Déconnecter">
+								<svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-unlock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+									<path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
+								</svg>
+								{{ app.user.username }}</a>
+						</li>
+					{% else %}
+						<li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
+							<a class="nav-link" href="{{path('login')}}">Connexion</a>
+						</li>
+						<li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
+							<a class="nav-link" href="{{path('app_registration_register')}}">Inscription</a>
+						</li>
+					{% endif %}
+				</ul>
+			</ul>
+
 		</div>
-
-		<div class="col-12 footer">
-			<p>PProject5 - Publié sous licence
-				<a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank" title="Lien vers la license">GPLv3</a>
-				||
-				<a href="https://github.com/ANDRE-Ani/PProject5" title="Dépôt Github" target="_blank"><img src="{{ asset('assets/img/github.png') }}" alt="Github"></a>
-			</p>
-			<p>
-				- ANDRE Ani -
-			</p>
-		</div>
-
-	</div>
+	</body>
+</html></head></html></nav><div class="container-fluid"><div class="row"><div class="col-12 content"> {% block content %}{% endblock %}
 </div>
 
-{% block script %}{% endblock %}</body></html>
+<div class="col-12 footer">
+	<p>PProject5 - Publié sous licence
+		<a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank" title="Lien vers la license">GPLv3</a>
+		||
+		<a href="https://github.com/ANDRE-Ani/PProject5" title="Dépôt Github" target="_blank"><img src="{{ asset('assets/img/github.png') }}" alt="Github"></a>
+	</p>
+	<p>
+		- ANDRE Ani -
+	</p>
+</div></div></div>{% block script %}{% endblock %}</body></html>

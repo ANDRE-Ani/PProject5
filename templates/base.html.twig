@@ -1,98 +1,109 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>
-            {% block title %}
-                {% if title is defined %}{{title}}{% else %}Title{% endif %}
-            {% endblock %}
-        </title>
-        {% block stylesheets %}
-            {# bootstrap #}
-            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-            {# custom #}
-            <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}" />
-    </head>
-    <body>
-    <body id="{% block body_id %}{% endblock %}">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>
+			{% block title %}
+				{% if title is defined %}
+					{{title}}{% else %}Title
+				{% endif %}
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
 
-        {% block header %}
-            
-                <div class="header2">
-                    <h1>{% if title is defined %}{{title}}{% else %}Header{% endif %}</h1>
+			{# custom #}
+			<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+		{% endblock %}
+		<link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}"/>
+	</head>
+	<body></body>
+	<body id="{% block body_id %}{% endblock %}">
 
-        {% endblock %}
+		{% block header %}
 
-        {% block nav %}
-            <nav id="main-nav" class="container navbar1 navbar navbar-expand-lg navbar-light bg-light border rounded mb-3">
-                <ul class="navbar-nav">
-                    <li class="nav-item {% if mainNavHome is defined %}active{% endif %}">
-                        <a class="nav-link" href="{{path('index')}}">Accueil</a>
-                    </li>
+			<div class="header2">
+				<h1>
+					{% if title is defined %}
+						{{title}}{% else %}Header
+					{% endif %}
+				</h1>
 
-                    {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('app_project_admin')}}"><i class="fas fa-tools"></i>Espace admin</a>
-                        </li>
-                    {% endif %}
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    {% if is_granted('ROLE_USER') %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{path('logout')}}">Déconnexion</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('login')}}">Connexion</a>
-                        </li>
-                        <li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
-                            <a class="nav-link" href="{{path('app_registration_register')}}">Inscription</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </nav>
-        {% endblock %}
+			{% endblock %}
 
-        {% block flash %}
-            {% for flash_message in app.session.flashbag.get('success') %}
-                <div class="container alert alert-success" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('info') %}
-                <div class="container alert alert-info" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('warning') %}
-                <div class="container alert alert-warning" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('danger') %}
-                <div class="container alert alert-danger" role="alert">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-        {% endblock %}
+			{% block nav %}
+				<nav id="main-nav" class="container navbar1 navbar navbar-expand-lg navbar-light bg-light border rounded mb-3">
+					<ul class="navbar-nav">
+						<li class="nav-item {% if mainNavHome is defined %}active{% endif %}">
+							<a class="nav-link" href="{{path('index')}}">Accueil</a>
+						</li>
 
-        <div class="container">
-            {% block body %}
-            {% endblock %}
-        </div>
+						{% if is_granted('ROLE_USER') %}
+							<li class="nav-item {% if mainNavMember is defined %}active{% endif %}">
+								<a class="nav-link" href="{{path('app_project_admin')}}">
+									<i class="fas fa-tools"></i>Espace admin</a>
+							</li>
+						{% endif %}
+					</ul>
+					<ul class="navbar-nav ml-auto">
+						{% if is_granted('ROLE_USER') %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('logout')}}">Déconnexion</a>
+							</li>
+						{% else %}
+							<li class="nav-item {% if mainNavLogin is defined %}active{% endif %}">
+								<a class="nav-link" href="{{path('login')}}">Connexion</a>
+							</li>
+							<li class="nav-item {% if mainNavRegistration is defined %}active{% endif %}">
+								<a class="nav-link" href="{{path('app_registration_register')}}">Inscription</a>
+							</li>
+						{% endif %}
+					</ul>
+				</nav>
+			{% endblock %}
 
-        {% block footer %}
-            
-                <div class="col-12 footer">
-                    <p>PProject5 - Publié sous licence <a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank" title="Lien vers la license">GPLv3</a> || <a href="https://github.com/ANDRE-Ani/PProject5" title="Dépôt Github" target="_blank"><img src="{{ asset('assets/img/github.png') }}" alt="Github"></a></p>
-                    <p> - ANDRE Ani - </p>
-                </div>
-            
-        {% endblock %}
+			{% block flash %}
+				{% for flash_message in app.session.flashbag.get('success') %}
+					<div class="container alert alert-success" role="alert">
+						{{ flash_message }}
+					</div>
+				{% endfor %}
+				{% for flash_message in app.session.flashbag.get('info') %}
+					<div class="container alert alert-info" role="alert">
+						{{ flash_message }}
+					</div>
+				{% endfor %}
+				{% for flash_message in app.session.flashbag.get('warning') %}
+					<div class="container alert alert-warning" role="alert">
+						{{ flash_message }}
+					</div>
+				{% endfor %}
+				{% for flash_message in app.session.flashbag.get('danger') %}
+					<div class="container alert alert-danger" role="alert">
+						{{ flash_message }}
+					</div>
+				{% endfor %}
+			{% endblock %}
 
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
+			<div class="container"> {% block body %}{% endblock %}
+				</div>
+
+				{% block footer %}
+
+					<div class="col-12 footer">
+						<p>PProject5 - Publié sous licence
+							<a href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank" title="Lien vers la license">GPLv3</a>
+							||
+							<a href="https://github.com/ANDRE-Ani/PProject5" title="Dépôt Github" target="_blank"><img src="{{ asset('assets/img/github.png') }}" alt="Github"></a>
+						</p>
+						<p>
+							- ANDRE Ani -
+						</p>
+					</div>
+
+				{% endblock %}
+
+				{% block javascripts %}{% endblock %}
+			</body>
+		</body>
+	</html>
